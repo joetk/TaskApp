@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,13 +17,28 @@
         tools:layout_editor_absoluteX="89dp"
         tools:layout_editor_absoluteY="29dp" />
 
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textSize="24dp"/>
+
+
+
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/txtNombreCategoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Descripcion"
+        android:hint="Nombre"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="91dp" />
-</android.support.constraint.ConstraintLayout>
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="93dp" />
+
+    <Button
+        android:id="@+id/btnCategoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="guardar Categoria" />
+</LinearLayout>
