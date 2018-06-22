@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".vista.CategoriaActivity">
 
@@ -12,8 +12,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrar Categoria"
-        android:textSize="24dp"
+        android:text="Registro de Categoria"
+        android:textSize="30dp"
         tools:layout_editor_absoluteX="89dp"
         tools:layout_editor_absoluteY="29dp" />
 
@@ -21,14 +21,14 @@
         android:id="@+id/txtNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre"
-        android:textSize="24dp"/>
-
+        android:layout_marginTop="60dp"
+        android:text="Nombre:"
+        android:textSize="24dp" />
 
 
     <EditText
         android:id="@+id/txtNombreCategoria"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nombre"
@@ -38,7 +38,11 @@
 
     <Button
         android:id="@+id/btnCategoria"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="guardar Categoria" />
+
+
 </LinearLayout>
+
