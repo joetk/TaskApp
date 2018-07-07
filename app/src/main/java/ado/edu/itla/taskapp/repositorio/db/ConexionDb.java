@@ -32,6 +32,6 @@ public class ConexionDb extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		   // TODO: lo veremos en un segunda etapda DBUpdate
+		   // TODO: lo veremos en un segunda etapa DBUpdate
 	}
 }

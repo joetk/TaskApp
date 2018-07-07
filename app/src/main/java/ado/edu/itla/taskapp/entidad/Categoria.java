@@ -1,13 +1,35 @@
 package ado.edu.itla.taskapp.entidad;
 
-public class Categoria {
+import java.io.Serializable;
+
+public class Categoria implements Serializable {
     private Integer id;
-    private String descripcion;
+    private String nombre;
 
 
-    public void setId (Integer id)
+    public Categoria () {
+
+    }
+
+
+    public Categoria (Integer id)
     {
         this.id = id;
+
+    }
+
+    public Categoria (Integer id , String  nombre )
+    {
+
+        this.id = id;
+        this.nombre = nombre;
+
+    }
+
+    public Categoria setId (Integer id)
+    {
+        this.id = id;
+        return this;
 
     }
 
@@ -15,21 +37,21 @@ public class Categoria {
         return id;
     }
 
-    public void setDescripcion (String descripcion)
+    public Categoria setNombre (String nombre)
     {
-        this.descripcion = descripcion;
-
+        this.nombre = nombre;
+        return this;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getNombre() {
+        return nombre;
     }
 
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Categoria{");
         sb.append("id=").append(id);
-        sb.append(", descripcion='").append(descripcion).append('\'');
+        sb.append(", nombre='").append(nombre).append('\'');
         sb.append('}');
         return sb.toString();
     }
