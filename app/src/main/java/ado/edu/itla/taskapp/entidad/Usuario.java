@@ -2,7 +2,11 @@ package ado.edu.itla.taskapp.entidad;
 
 public class Usuario {
 
-    public enum TipoUsuario { TECNICO , NORMAL}
+    public enum   TipoUsuario {
+        TECNICO  , NORMAL
+
+
+    }
 
     private Integer id;
     private String nombre;

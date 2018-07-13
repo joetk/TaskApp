@@ -12,6 +12,6 @@ public interface CategoriaRepositorio {
 
     Categoria buscar (int id);
 
-    List<Categoria> buscar (String Nombre);
+    List<Categoria> buscar (String Email);
 
 }
