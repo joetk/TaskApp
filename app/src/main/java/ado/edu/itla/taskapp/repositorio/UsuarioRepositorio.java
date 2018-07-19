@@ -14,6 +14,7 @@ public  interface UsuarioRepositorio {
 
  Usuario buscar (String Nombre);
 
+ List<Usuario> buscarTecnicos();
 
 
 }

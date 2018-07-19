@@ -85,8 +85,9 @@ public class UsuarioRepositorioDbImp implements UsuarioRepositorio {
 
         Cursor cr = db.query(TABLA_USUARIO,columnas,ID + " = ?" ,  new String [] {String.valueOf(id)},null ,null,null);
 
-        if (!cr.moveToFirst())
+        if (!cr.moveToFirst()) {
             return null;
+        }
 
         String nombre = cr.getString(cr.getColumnIndex(CAMPO_NOMBRE));
         String contrasena = cr.getString(cr.getColumnIndex(CAMPO_CONTRASENA));
@@ -112,9 +113,9 @@ public class UsuarioRepositorioDbImp implements UsuarioRepositorio {
 
         Cursor cr = db.query(TABLA_USUARIO,columnas, CAMPO_EMAIL + " =?" ,  new String [] {Email},null ,null,null);
 
-        if (!cr.moveToFirst())
+        if (!cr.moveToFirst()) {
             return null;
-
+        }
 
              int id = cr.getInt(cr.getColumnIndex(ID));
 
@@ -134,5 +135,47 @@ public class UsuarioRepositorioDbImp implements UsuarioRepositorio {
         db.close();
 
         return usuario;
+    }
+
+    @Override
+    public List<Usuario> buscarTecnicos() {
+
+        List<Usuario> usuarios = new ArrayList<Usuario> ();
+        SQLiteDatabase db = conexionDb.getReadableDatabase();
+        String[] columnas = {ID , CAMPO_NOMBRE, CAMPO_CONTRASENA, CAMPO_EMAIL, CAMPO_TIPOUSUARIO};
+
+
+        Cursor cr = db.query(TABLA_USUARIO,columnas,  CAMPO_TIPOUSUARIO + " =?"  ,  new String [] {Usuario.TipoUsuario.TECNICO.toString()},null ,null,null);
+
+
+        if (!cr.moveToFirst()){
+            return null;
+        }
+
+        while (!cr.isAfterLast()) {
+
+            int id = cr.getInt(cr.getColumnIndex(ID));
+
+            String nombre = cr.getString(cr.getColumnIndex(CAMPO_NOMBRE));
+            String contrasena = cr.getString(cr.getColumnIndex(CAMPO_CONTRASENA));
+            String email = cr.getString(cr.getColumnIndex(CAMPO_EMAIL));
+            Usuario.TipoUsuario tipoUsuario = Usuario.TipoUsuario.valueOf(cr.getString(cr.getColumnIndex(CAMPO_TIPOUSUARIO)));
+
+            Usuario usuario = new Usuario();
+
+            usuario.setId(id);
+            usuario.setContrasena(contrasena);
+            usuario.setEmail(email);
+            usuario.setTipoUsuario(tipoUsuario);
+
+            usuarios.add(usuario);
+
+        }
+
+        cr.close();
+        db.close();
+
+
+        return usuarios;
     }
 }

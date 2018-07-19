@@ -4,12 +4,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ado.edu.itla.taskapp.MainActivity;
 import ado.edu.itla.taskapp.R;
 import ado.edu.itla.taskapp.entidad.Usuario;
 import ado.edu.itla.taskapp.repositorio.db.ConexionDb;
@@ -22,7 +24,18 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_usuario);
 
-        TextView buttonRegistro =  findViewById(R.id.buttonRegistrar);
+        Button buttonRegistro =  findViewById(R.id.buttonRegistrar);
+        Button buttonCancelar = findViewById(R.id.buttonCancelar);
+
+
+
+        buttonCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                  RegistroUsuarioActivity.this.finish();
+
+            }
+        });
 
 
 
@@ -51,37 +64,28 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
 
                 UsuarioRepositorioDbImp usuarioRepo = new UsuarioRepositorioDbImp(RegistroUsuarioActivity.this);
 
+                // comprueba si los campos de contraseña concuerdan
+                if (usuario.getContrasena().equals(txtConfirmar.getText().toString())) {
+                    //verifica si no hay campos vacios
+                    if (validarCampos(usuario, txtConfirmar.getText().toString())) {
+
+                        if (usuarioRepo.buscar(usuario.getEmail()) == null) {
+                            usuarioRepo.guardar(usuario);
+                            Toast.makeText(RegistroUsuarioActivity.this, "se ah registrado el usuario", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(RegistroUsuarioActivity.this, "este usuario ya existe", Toast.LENGTH_SHORT).show();
+                        }
 
 
+                    } else {
+                        Toast.makeText(RegistroUsuarioActivity.this, "hay uno  o mas campos vacio", Toast.LENGTH_SHORT).show();
 
-                if (validarCampos(usuario,txtConfirmar.getText().toString()))
-                   {
-
-                       if (usuarioRepo.buscar(usuario.getEmail()) == null)
-                       {
-                           usuarioRepo.guardar(usuario);
-                           Toast.makeText(RegistroUsuarioActivity.this, "se ah registrado el usuario", Toast.LENGTH_SHORT).show();
-
-                       }
-
-                       else
-                       {
-                           Toast.makeText(RegistroUsuarioActivity.this, "este usuario ya existe", Toast.LENGTH_SHORT).show();
-                       }
-
-
-
-                   }
-
-
-                else
-                   {
-                     Toast.makeText(RegistroUsuarioActivity.this, "hay uno  o mas campos vacio", Toast.LENGTH_SHORT).show();
-
-                   }
-
-
-
+                    }
+                 }
+                else{
+                    Toast.makeText(RegistroUsuarioActivity.this, "La Contrasena no coincide",Toast.LENGTH_SHORT).show();
+                    }
             }
         } );
     }
@@ -93,8 +97,8 @@ public class RegistroUsuarioActivity extends AppCompatActivity {
 
 
       return  !(usuario.getEmail().equals(EMPTY_STRING)
-               || usuario.getNombre().equals (EMPTY_STRING)
-              || usuario.getContrasena().equals (EMPTY_STRING)   );
+                || usuario.getNombre().equals (EMPTY_STRING)
+                || usuario.getContrasena().equals (EMPTY_STRING) );
 
 
     }
