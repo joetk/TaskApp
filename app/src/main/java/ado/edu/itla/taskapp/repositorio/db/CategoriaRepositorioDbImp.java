@@ -15,6 +15,7 @@ public class CategoriaRepositorioDbImp implements CategoriaRepositorio {
 
     private ConexionDb conexionDb;
 
+    private static final String CAMPO_ID = "id";
     private static final String CAMPO_NOMBRE = "nombre";
     private static final String TABLA_CATEGORIA =  "categoria";
 
@@ -56,7 +57,7 @@ public class CategoriaRepositorioDbImp implements CategoriaRepositorio {
 
 
         SQLiteDatabase db = conexionDb.getWritableDatabase();
-        int cantidad =  db.update(TABLA_CATEGORIA, cv,"id = ?", new String[] {categoria.getId().toString()});
+        int cantidad =  db.update(TABLA_CATEGORIA, cv, CAMPO_ID+" = ?", new String[] {categoria.getId().toString()});
 
         db.close();
 
@@ -67,8 +68,26 @@ public class CategoriaRepositorioDbImp implements CategoriaRepositorio {
 
     @Override
     public Categoria buscar(int id) {
-        //TODO:pendiente a definir
-        return null;
+
+       Categoria categoria = new Categoria();
+       SQLiteDatabase db =  conexionDb.getReadableDatabase();
+
+       String[] columnas = {CAMPO_ID, CAMPO_NOMBRE};
+
+       Cursor cr  = db.query(TABLA_CATEGORIA,columnas, CAMPO_ID + " =?", new String[] {String.valueOf(id)},null,null,null);
+
+       if (!cr.moveToFirst())
+       {
+           return null;
+
+       }
+
+
+       categoria.setId(cr.getInt(cr.getColumnIndex(CAMPO_ID)));
+       categoria.setNombre(cr.getString(cr.getColumnIndex(CAMPO_NOMBRE)));
+
+
+        return categoria;
     }
 
     @Override
@@ -79,14 +98,14 @@ public class CategoriaRepositorioDbImp implements CategoriaRepositorio {
        List<Categoria> categorias = new ArrayList();
 
        SQLiteDatabase db = conexionDb.getReadableDatabase();
-       String[] columnas = {"id",CAMPO_NOMBRE};
+       String[] columnas = {CAMPO_ID,CAMPO_NOMBRE};
 
        Cursor cr = db.query(TABLA_CATEGORIA,columnas,null,null,null,null,null);
        cr.moveToFirst();
 
 
        while (!cr.isAfterLast()) {
-           int id = cr.getInt(cr.getColumnIndex("id"));
+           int id = cr.getInt(cr.getColumnIndex(CAMPO_ID));
            String nombre = cr.getString(cr.getColumnIndex(CAMPO_NOMBRE));
 
 
