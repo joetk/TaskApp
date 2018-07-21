@@ -2,25 +2,23 @@ package ado.edu.itla.taskapp.entidad;
 
 public class UsuarioCategoria {
 
-    private int usuarioId;
-    private int categoriaId;
+    private Usuario usuario;
+    private Categoria categoria;
 
 
-
-
-    public int getUsuarioId() {
-        return usuarioId;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public int getCategoriaId() {
-        return categoriaId;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCategoriaId(int categoriaId) {
-        this.categoriaId = categoriaId;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }

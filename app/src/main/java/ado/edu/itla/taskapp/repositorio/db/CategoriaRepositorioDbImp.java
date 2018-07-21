@@ -15,6 +15,7 @@ public class CategoriaRepositorioDbImp implements CategoriaRepositorio {
 
     private ConexionDb conexionDb;
 
+
     private static final String CAMPO_ID = "id";
     private static final String CAMPO_NOMBRE = "nombre";
     private static final String TABLA_CATEGORIA =  "categoria";

@@ -26,7 +26,7 @@ public class ConexionDb extends SQLiteOpenHelper {
 
 		db.execSQL(EstructuraDb.TABLA_CATEGORIA);
 		db.execSQL( EstructuraDb.TABLA_USUARIO);
-
+        db.execSQL(EstructuraDb.TABLA_USUARIO_CATEGORIA);
 
 	}
 

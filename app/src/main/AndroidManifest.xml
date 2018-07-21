@@ -24,7 +24,10 @@
         </activity>
         <activity android:name=".vista.RegistroUsuarioActivity" />
         <activity android:name=".vista.UsuarioTecnicoActivity" />
-        <activity android:name=".vista.UsuarioTecnicoNotasActivity"></activity>
+        <activity android:name=".vista.UsuarioTecnicoNotasActivity" />
+        <activity android:name=".vista.UsuarioNormalActivity" />
+        <activity android:name=".vista.CrearTareasActivity" />
+        <activity android:name=".vista.UsuarioNormalTareasDetalleActivity"></activity>
     </application>
 
 </manifest>

@@ -50,7 +50,7 @@ public class TareasListAdapter extends BaseAdapter {
        }
 
        TextView txtDescripcion = convertView.findViewById(R.id.textViewDescripcion);
-       TextView txtUsuarioCreador = convertView.findViewById (R.id.textViewUsuarioCreador);
+       TextView txtUsuarioCreador = convertView.findViewById (R.id.textViewUsuarioAsignado);
        TextView txtCategoria  = convertView.findViewById (R.id.textViewCategoria);
 
        TextView txtFecha = convertView.findViewById(R.id.textViewFecha);
