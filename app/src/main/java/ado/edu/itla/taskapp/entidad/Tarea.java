@@ -14,11 +14,12 @@ public class Tarea {
     private Integer id;
     private String nombre;
     private String descripcion;
-    private String fecha;
+    private Date fecha;
     private Date fechaTerminado;
     private TareaEstado tareaEstado;
     private Usuario usuarioCreador;
     private Usuario usuarioAsignado;
+    private int categoriaId;
 
     public Integer getId() {
         return id;
@@ -44,11 +45,11 @@ public class Tarea {
         this.descripcion = descripcion;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -82,5 +83,13 @@ public class Tarea {
 
     public void setUsuarioAsignado(Usuario usuarioAsignado) {
         this.usuarioAsignado = usuarioAsignado;
+    }
+
+    public int getCategoriaId() {
+        return categoriaId;
+    }
+
+    public void setCategoriaId(int categoriaId) {
+        this.categoriaId = categoriaId;
     }
 }

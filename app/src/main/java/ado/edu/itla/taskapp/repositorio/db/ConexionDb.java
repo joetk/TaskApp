@@ -27,11 +27,21 @@ public class ConexionDb extends SQLiteOpenHelper {
 		db.execSQL(EstructuraDb.TABLA_CATEGORIA);
 		db.execSQL( EstructuraDb.TABLA_USUARIO);
         db.execSQL(EstructuraDb.TABLA_USUARIO_CATEGORIA);
+        db.execSQL (EstructuraDb.TABLA_TAREA);
 
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		   // TODO: lo veremos en un segunda etapa DBUpdate
+
+
+
+	 	if (newVersion >   oldVersion)
+	 	  {
+
+
+
+		  }
+
 	}
 }

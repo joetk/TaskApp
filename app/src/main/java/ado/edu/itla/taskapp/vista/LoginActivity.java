@@ -50,7 +50,10 @@ public class LoginActivity extends AppCompatActivity {
                  
                  if ( usuario != null && usuario.getContrasena().equals(txtContrasena.getText().toString()) )
                  {
-                     Intent intent = new Intent (LoginActivity.this, MainActivity.class);
+                     Intent intent =  usuario.getTipoUsuario() == Usuario.TipoUsuario.NORMAL ?
+                                       new Intent (LoginActivity.this, UsuarioNormalActivity.class) :
+                                       new Intent (LoginActivity.this, UsuarioTecnicoActivity.class);
+
                      LoginInfo.getInstance().usuario = usuario;
                      
                      startActivity(intent);

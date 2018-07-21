@@ -170,6 +170,8 @@ public class UsuarioRepositorioDbImp implements UsuarioRepositorio {
 
             usuarios.add(usuario);
 
+            cr.moveToNext();
+
         }
 
         cr.close();
