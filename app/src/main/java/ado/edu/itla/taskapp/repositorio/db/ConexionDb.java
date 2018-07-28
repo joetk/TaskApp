@@ -39,6 +39,13 @@ public class ConexionDb extends SQLiteOpenHelper {
 	 	if (newVersion >   oldVersion)
 	 	  {
 
+	 	  	for ( String tabla : EstructuraDb.getEstructuraDb() )
+			{
+
+			 db.execSQL( "CREATE TABLE IF NO EXIST" + tabla.substring(13) );
+
+
+			}
 
 
 		  }

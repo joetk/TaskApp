@@ -33,8 +33,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
-
          textViewRegistrate.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
@@ -64,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                                        new Intent (LoginActivity.this, UsuarioTecnicoActivity.class);
 
                      LoginInfo.getInstance().usuario = usuario;
-                     
+
                      startActivity(intent);
                      
                  }

@@ -31,8 +31,8 @@ public class CategoriaRepositorioDbImp implements CategoriaRepositorio {
     @Override
     public boolean guardar(Categoria categoria) {
 
-        if (categoria != null && categoria.getId() > 0)
-             return actualizar(categoria);
+     /*   if (categoria != null && categoria.getId() > 0)
+             return actualizar(categoria); */
 
        ContentValues cv = new ContentValues();
        cv.put(CAMPO_NOMBRE, categoria.getNombre());

@@ -46,7 +46,7 @@ public class TareaRepositorioDbImp implements TareaRepositorio {
         cv.put(CAMPO_NOMBRE, tarea.getNombre());
         cv.put (CAMPO_DESCRIPCION,tarea.getDescripcion());
         cv.put (CAMPO_FECHA, tarea.getFecha().getTime());
-        cv.put (CAMPO_FECHA_COMPLETADO, tarea.getFechaTerminado().getTime());
+        cv.put (CAMPO_FECHA_COMPLETADO,  tarea.getFechaTerminado() == null ? null : tarea.getFechaTerminado().getTime());
         cv.put (CAMPO_ESTADO, tarea.getTareaEstado().toString());
         cv.put (CAMPO_USUARIO_CREADOR_ID, tarea.getUsuarioCreadorId());
         cv.put (CAMPO_USUARIO_ASIGNADO_ID, tarea.getUsuarioAsignado());

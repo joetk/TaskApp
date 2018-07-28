@@ -79,6 +79,7 @@ public class CrearTareasActivity extends AppCompatActivity {
                 Tarea tarea  = new Tarea();
 
                 tarea.setDescripcion(txtDescripcion.getText().toString());
+                tarea.setNombre("generico");
                 tarea.setFecha( new Date(System.currentTimeMillis()));
                 tarea.setFechaTerminado(null);
                 tarea.setTareaEstado(Tarea.TareaEstado.PENDIENTE);
@@ -86,7 +87,19 @@ public class CrearTareasActivity extends AppCompatActivity {
                 tarea.setUsuarioAsignadoId(   ((Usuario)spinnerUsuario.getSelectedItem()).getId() );
                 tarea.setCategoriaId( ((Categoria)spinnerCategoria.getSelectedItem()).getId());
 
-                Toast.makeText(CrearTareasActivity.this, tarea.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(CrearTareasActivity.this, tarea.toString(),Toast.LENGTH_LONG).show();
+
+              if ( tareaDbImp.guardar(tarea) )
+              {
+                  Toast.makeText(CrearTareasActivity.this, "se ha creado la tarea con exito", Toast.LENGTH_SHORT).show();
+
+              }
+
+              else
+                {
+                    Toast.makeText(CrearTareasActivity.this, "hubo un problema creando la tarea", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
