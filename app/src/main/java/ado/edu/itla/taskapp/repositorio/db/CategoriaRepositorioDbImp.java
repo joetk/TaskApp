@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,13 +97,19 @@ public class CategoriaRepositorioDbImp implements CategoriaRepositorio {
 
 
         //TODO: buscar las categoria por  su nombre
-       List<Categoria> categorias = new ArrayList();
+       List<Categoria> categorias = new ArrayList<Categoria>();
 
        SQLiteDatabase db = conexionDb.getReadableDatabase();
        String[] columnas = {CAMPO_ID,CAMPO_NOMBRE};
 
        Cursor cr = db.query(TABLA_CATEGORIA,columnas,null,null,null,null,null);
-       cr.moveToFirst();
+
+
+       if (!cr.moveToFirst())
+       {
+           return null;
+
+       }
 
 
        while (!cr.isAfterLast()) {
@@ -115,8 +122,11 @@ public class CategoriaRepositorioDbImp implements CategoriaRepositorio {
            cr.moveToNext();
        }
 
+
+
        cr.close();
        db.close();
-        return categorias;
+
+       return categorias;
     }
 }

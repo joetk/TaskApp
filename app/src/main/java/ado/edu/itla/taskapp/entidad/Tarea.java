@@ -17,8 +17,8 @@ public class Tarea {
     private Date fecha;
     private Date fechaTerminado;
     private TareaEstado tareaEstado;
-    private Usuario usuarioCreador;
-    private Usuario usuarioAsignado;
+    private int usuarioCreadorId;
+    private int usuarioAsignadoId;
     private int categoriaId;
 
     public Integer getId() {
@@ -69,20 +69,20 @@ public class Tarea {
         this.tareaEstado = tareaEstado;
     }
 
-    public Usuario getUsuarioCreador() {
-        return usuarioCreador;
+    public int getUsuarioCreadorId() {
+        return usuarioCreadorId;
     }
 
-    public void setUsuarioCreador(Usuario usuarioCreador) {
-        this.usuarioCreador = usuarioCreador;
+    public void setUsuarioCreadorId(int usuarioCreadorId) {
+        this.usuarioCreadorId = usuarioCreadorId;
     }
 
-    public Usuario getUsuarioAsignado() {
-        return usuarioAsignado;
+    public int getUsuarioAsignado() {
+        return usuarioAsignadoId;
     }
 
-    public void setUsuarioAsignado(Usuario usuarioAsignado) {
-        this.usuarioAsignado = usuarioAsignado;
+    public void setUsuarioAsignadoId(int usuarioAsignadoId) {
+        this.usuarioAsignadoId = usuarioAsignadoId;
     }
 
     public int getCategoriaId() {
@@ -91,5 +91,21 @@ public class Tarea {
 
     public void setCategoriaId(int categoriaId) {
         this.categoriaId = categoriaId;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Tarea{");
+        sb.append("id=").append(id);
+        sb.append(", nombre='").append(nombre).append('\'');
+        sb.append(", descripcion='").append(descripcion).append('\'');
+        sb.append(", fecha=").append(fecha);
+        sb.append(", fechaTerminado=").append(fechaTerminado);
+        sb.append(", tareaEstado=").append(tareaEstado);
+        sb.append(", usuarioCreadorId=").append(usuarioCreadorId);
+        sb.append(", usuarioAsignadoId=").append(usuarioAsignadoId);
+        sb.append(", categoriaId=").append(categoriaId);
+        sb.append('}');
+        return sb.toString();
     }
 }

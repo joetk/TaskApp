@@ -10,7 +10,7 @@ public interface TareaRepositorio {
 
     boolean guardar (Tarea tarea);
 
-    Categoria buscar (int id);
+    Tarea buscar (int id);
 
     List<Tarea> buscarAsignadaA (Usuario usuario);
 

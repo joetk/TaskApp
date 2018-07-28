@@ -59,7 +59,7 @@ public class TareasListAdapter extends BaseAdapter {
        Tarea tarea  = tareas.get(position);
 
         txtDescripcion.setText(tarea.getDescripcion());
-        txtUsuarioCreador.setText(tarea.getUsuarioCreador().getNombre());
+
        //TODO: terminar de Agregar las informaciones de tareas
 
         return null;

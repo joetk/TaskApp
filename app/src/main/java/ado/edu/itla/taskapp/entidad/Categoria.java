@@ -3,8 +3,10 @@ package ado.edu.itla.taskapp.entidad;
 import java.io.Serializable;
 
 public class Categoria implements Serializable {
+
     private Integer id;
     private String nombre;
+
 
 
     public Categoria () {
@@ -47,14 +49,11 @@ public class Categoria implements Serializable {
         return nombre;
     }
 
+
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Categoria{");
-        sb.append("id=").append(id);
-        sb.append(", nombre='").append(nombre).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
 
+        return nombre;
+    }
 }
 

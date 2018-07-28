@@ -1,6 +1,7 @@
 package ado.edu.itla.taskapp.vista;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +12,12 @@ import android.widget.Toast;
 
 import ado.edu.itla.taskapp.MainActivity;
 import ado.edu.itla.taskapp.R;
+import ado.edu.itla.taskapp.entidad.Categoria;
 import ado.edu.itla.taskapp.entidad.Usuario;
 import ado.edu.itla.taskapp.repositorio.LoginInfo;
+import ado.edu.itla.taskapp.repositorio.db.CategoriaRepositorioDbImp;
+import ado.edu.itla.taskapp.repositorio.db.ConexionDb;
+import ado.edu.itla.taskapp.repositorio.db.EstructuraDb;
 import ado.edu.itla.taskapp.repositorio.db.UsuarioRepositorioDbImp;
 
 
@@ -25,7 +30,11 @@ public class LoginActivity extends AppCompatActivity {
 
          TextView textViewRegistrate = findViewById(R.id.textViewRegistrarse);
          Button buttonLogin = findViewById(R.id.buttonLogin);
-         
+
+
+
+
+
          textViewRegistrate.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
