@@ -30,13 +30,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewTelefono"
+        android:id="@+id/textViewCategoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="Telefono"
+        android:text="categoria"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelCategoria" />
 
@@ -50,7 +50,7 @@
         android:text="Asignado A:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTelefono" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCategoria" />
 
     <TextView
         android:id="@+id/textViewUsuarioAsignado"

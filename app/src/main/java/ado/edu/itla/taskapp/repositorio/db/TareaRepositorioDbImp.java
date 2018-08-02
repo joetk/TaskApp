@@ -60,6 +60,32 @@ public class TareaRepositorioDbImp implements TareaRepositorio {
     }
 
     @Override
+    public boolean actualizar(Tarea tarea) {
+
+       SQLiteDatabase db =  conexionDb.getReadableDatabase();
+       ContentValues cv = new ContentValues();
+
+       cv.put(CAMPO_NOMBRE, tarea.getNombre());
+       cv.put(CAMPO_DESCRIPCION, tarea.getDescripcion());
+       cv.put(CAMPO_FECHA, tarea.getFecha().getTime());
+       cv.put(CAMPO_FECHA_COMPLETADO, tarea.getFechaTerminado() == null ? null : tarea.getFechaTerminado().getTime());
+       cv.put (CAMPO_ESTADO, tarea.getTareaEstado().toString());
+       cv.put (CAMPO_USUARIO_CREADOR_ID, tarea.getUsuarioCreadorId());
+       cv.put (CAMPO_USUARIO_ASIGNADO_ID, tarea.getUsuarioAsignado());
+       cv.put (CAMPO_CATEGORIA_ID,  tarea.getCategoriaId());
+
+
+
+       long cantidad =  db.update(TABLA_TAREA, cv, CAMPO_ID + " = ?", new String [] {String.valueOf(tarea.getId())} ) ;
+
+       db.close();
+
+        return cantidad > 0;
+    }
+
+
+
+    @Override
     public Tarea buscar(int id) {
 
          SQLiteDatabase db = conexionDb.getReadableDatabase();

@@ -87,7 +87,7 @@ public class CrearTareasActivity extends AppCompatActivity {
                 tarea.setUsuarioAsignadoId(   ((Usuario)spinnerUsuario.getSelectedItem()).getId() );
                 tarea.setCategoriaId( ((Categoria)spinnerCategoria.getSelectedItem()).getId());
 
-                Toast.makeText(CrearTareasActivity.this, tarea.toString(),Toast.LENGTH_LONG).show();
+
 
               if ( tareaDbImp.guardar(tarea) )
               {

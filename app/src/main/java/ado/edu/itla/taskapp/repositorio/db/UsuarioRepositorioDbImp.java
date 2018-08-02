@@ -95,6 +95,7 @@ public class UsuarioRepositorioDbImp implements UsuarioRepositorio {
         Usuario.TipoUsuario tipoUsuario = Usuario.TipoUsuario.valueOf( cr.getString(cr.getColumnIndex(CAMPO_TIPOUSUARIO)) );
 
         usuario.setId(id);
+        usuario.setNombre(nombre);
         usuario.setContrasena(contrasena);
         usuario.setEmail(email);
         usuario.setTipoUsuario(tipoUsuario);

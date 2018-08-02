@@ -1,6 +1,9 @@
 package ado.edu.itla.taskapp.vista;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,13 +28,17 @@ public class TareasListAdapter extends BaseAdapter {
     private  List<Tarea> tareas;
     private UsuarioRepositorioDbImp usuarioDbImp;
     private CategoriaRepositorioDbImp categoriaDbImp;
+    private String labelAsignado;
 
     public TareasListAdapter (Context context, List<Tarea> tareas)
     {
         this.context = context;
         this.tareas = tareas;
+        this.labelAsignado=  tareas.size() > 0 ? "Asignado A: " : "";
+
         usuarioDbImp = new UsuarioRepositorioDbImp(context);
         categoriaDbImp = new CategoriaRepositorioDbImp(context);
+
 
     }
 
@@ -61,20 +68,38 @@ public class TareasListAdapter extends BaseAdapter {
 
 
        TextView txtDescripcion = view.findViewById(R.id.textViewDescripcion);
-       TextView txtUsuarioCreador = view.findViewById (R.id.textViewUsuarioAsignado);
+       TextView txtUsuarioAsignado = view.findViewById (R.id.textViewUsuarioAsignado);
        TextView txtCategoria  = view.findViewById (R.id.textViewCategoria);
        TextView txtFecha = view.findViewById(R.id.textViewFecha);
        TextView txtEstado = view.findViewById(R.id.textViewEstado);
 
        Tarea tarea  = tareas.get(position);
-       Usuario usuario =  usuarioDbImp.buscar(tarea.getUsuarioCreadorId() );
+       Usuario usuario =  usuarioDbImp.buscar(tarea.getUsuarioAsignado() );
        Categoria categoria =  categoriaDbImp.buscar(tarea.getCategoriaId());
 
        txtDescripcion.setText(tarea.getDescripcion());
-       txtUsuarioCreador.setText(usuario.getNombre());
+       txtUsuarioAsignado.setText(labelAsignado + usuario.getNombre());
        txtCategoria.setText( categoria.getNombre());
        txtFecha.setText(  new SimpleDateFormat("dd-MM-yyyy").format( tarea.getFecha()));
+
+
+       switch (tarea.getTareaEstado())
+       {
+
+           case PENDIENTE:
+               txtEstado.setTextColor(Color.rgb(236, 240, 14)); // amarillo
+               break;
+
+           case TERMINADO:
+               txtEstado.setTextColor(Color.rgb(226,78,51)); // rojo
+               break;
+
+
+       }
+
+
        txtEstado.setText(tarea.getTareaEstado().toString());
+
 
 
 

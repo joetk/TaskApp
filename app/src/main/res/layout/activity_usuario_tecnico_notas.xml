@@ -6,6 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".vista.UsuarioTecnicoNotasActivity">
 
+    <TextView
+        android:id="@+id/textViewUsuarioNota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:text="txtUsuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelUsuario" />
+
+    <TextView
+        android:id="@+id/textViewLabelUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:text="Usuario:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCategoriaNota" />
+
     <Button
         android:id="@+id/buttonListo"
         android:layout_width="93dp"
@@ -33,9 +56,9 @@
         android:id="@+id/textViewLabelCategoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
         android:text="Categoria:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +68,8 @@
         android:id="@+id/textViewCategoriaNota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="4dp"
         android:text="txtCategoria"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,21 +79,21 @@
         android:id="@+id/textViewLabelDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
         android:text="Descripcion:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCategoriaNota" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsuarioNota" />
 
     <TextView
         android:id="@+id/textViewDescripcionNota"
         android:layout_width="316dp"
-        android:layout_height="58dp"
+        android:layout_height="62dp"
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:text="txtDescripcion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLabelDescripcion" />
@@ -81,7 +104,7 @@
         android:layout_height="35dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:background="@color/light_Blue"
         android:text="Agregar Nota"
         android:textSize="11dp"

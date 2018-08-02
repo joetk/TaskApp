@@ -1,8 +1,9 @@
 package ado.edu.itla.taskapp.entidad;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Tarea {
+public class Tarea implements Serializable{
 
     public enum TareaEstado {
 

@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 import ado.edu.itla.taskapp.MainActivity;
 import ado.edu.itla.taskapp.R;
 import ado.edu.itla.taskapp.entidad.Categoria;
@@ -30,6 +32,9 @@ public class LoginActivity extends AppCompatActivity {
 
          TextView textViewRegistrate = findViewById(R.id.textViewRegistrarse);
          Button buttonLogin = findViewById(R.id.buttonLogin);
+
+
+
 
 
 
