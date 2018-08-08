@@ -61,4 +61,15 @@ public class UsuarioTecnicoActivity extends AppCompatActivity {
 
 
     }
+
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data)
+    {
+
+
+
+    }
+
+
 }

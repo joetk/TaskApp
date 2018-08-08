@@ -87,19 +87,23 @@ public class TareasListAdapter extends BaseAdapter {
        {
 
            case PENDIENTE:
-               txtEstado.setTextColor(Color.rgb(236, 240, 14)); // amarillo
+               txtEstado.setTextColor(Color.rgb(238,169,95)); // orange
+               txtEstado.setText("PENDIENTE");
+               break;
+
+
+           case EN_PROCESO:
+               txtEstado.setTextColor(Color.rgb(62,230, 135)); // verde
+               txtEstado.setText("EN PROCESO");
                break;
 
            case TERMINADO:
                txtEstado.setTextColor(Color.rgb(226,78,51)); // rojo
+               txtEstado.setText("TERMINADO");
                break;
 
 
        }
-
-
-       txtEstado.setText(tarea.getTareaEstado().toString());
-
 
 
 

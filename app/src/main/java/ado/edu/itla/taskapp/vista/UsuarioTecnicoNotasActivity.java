@@ -1,5 +1,6 @@
 package ado.edu.itla.taskapp.vista;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +29,7 @@ public class UsuarioTecnicoNotasActivity extends AppCompatActivity {
         final Tarea tarea = (Tarea) getIntent().getSerializableExtra("Tarea");
         CategoriaRepositorioDbImp categoriaRepo = new CategoriaRepositorioDbImp( this);
         UsuarioRepositorioDbImp usuarioRepo = new UsuarioRepositorioDbImp(this);
-        Button buttonListo = findViewById(R.id.buttonListo);
+        final Button buttonListo = findViewById(R.id.buttonListo);
 
 
 
@@ -45,45 +46,63 @@ public class UsuarioTecnicoNotasActivity extends AppCompatActivity {
         txtUsuario.setText(usuarioRepo.buscar(tarea.getUsuarioAsignado()).getNombre());
         txtDescripcion.setText(tarea.getDescripcion());
 
+        switch(tarea.getTareaEstado())
+        {
+
+            case EN_PROCESO:
+                buttonListo.setText("TERMINADO");
+                buttonListo.setBackgroundColor(Color.rgb(226,78,51));
+                break;
+
+            case TERMINADO:
+                buttonListo.setEnabled(false);
+                break;
+
+
+        }
+
 
         buttonListo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                if (tarea.getTareaEstado() != Tarea.TareaEstado.TERMINADO ) {
 
 
-                    Tarea tareaActualizada = new Tarea();
 
-                    tareaActualizada.setId(tarea.getId());
-                    tareaActualizada.setNombre(tarea.getNombre());
-                    tareaActualizada.setDescripcion(tarea.getDescripcion());
-                    tareaActualizada.setFecha(tarea.getFecha());
-                    tareaActualizada.setFechaTerminado(new Date(System.currentTimeMillis()));
-                    tareaActualizada.setTareaEstado(Tarea.TareaEstado.TERMINADO);
-                    tareaActualizada.setCategoriaId(tarea.getCategoriaId());
-                    tareaActualizada.setUsuarioCreadorId(tarea.getUsuarioCreadorId());
-                    tareaActualizada.setUsuarioAsignadoId(tarea.getUsuarioAsignado());
+            if (tarea.getTareaEstado() != Tarea.TareaEstado.TERMINADO) {
 
-                    TareaRepositorioDbImp tareaRepo = new TareaRepositorioDbImp(UsuarioTecnicoNotasActivity.this);
+                Tarea tareaActualizada = new Tarea();
 
-                    if (tareaRepo.actualizar(tareaActualizada)) {
+                tareaActualizada.setId(tarea.getId());
+                tareaActualizada.setNombre(tarea.getNombre());
+                tareaActualizada.setDescripcion(tarea.getDescripcion());
+                tareaActualizada.setFecha(tarea.getFecha());
+                tareaActualizada.setFechaTerminado(new Date(System.currentTimeMillis()));
+                tareaActualizada.setTareaEstado(Tarea.TareaEstado.PENDIENTE == tarea.getTareaEstado()
+                        ? Tarea.TareaEstado.EN_PROCESO : Tarea.TareaEstado.TERMINADO);
+                tareaActualizada.setCategoriaId(tarea.getCategoriaId());
+                tareaActualizada.setUsuarioCreadorId(tarea.getUsuarioCreadorId());
+                tareaActualizada.setUsuarioAsignadoId(tarea.getUsuarioAsignado());
 
-                        Toast.makeText(UsuarioTecnicoNotasActivity.this, "se a Terminado la tarea", Toast.LENGTH_SHORT).show();
+                TareaRepositorioDbImp tareaRepo = new TareaRepositorioDbImp(UsuarioTecnicoNotasActivity.this);
 
-                    } else {
-                        Toast.makeText(UsuarioTecnicoNotasActivity.this, "hubo un problema Terminando la tarea", Toast.LENGTH_SHORT).show();
+                if (tareaRepo.actualizar(tareaActualizada)) {
 
-                    }
+                    Toast.makeText(UsuarioTecnicoNotasActivity.this, "se a cambiado el estado de la tarea", Toast.LENGTH_SHORT).show();
 
-                }
-
-                else
-                {
-                    Toast.makeText(UsuarioTecnicoNotasActivity.this, "la tarea ya habia sido Terminada", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(UsuarioTecnicoNotasActivity.this, "hubo un problema Cambiando el estado de la tarea", Toast.LENGTH_SHORT).show();
 
                 }
+
+
+                Intent intent  = new Intent (UsuarioTecnicoNotasActivity.this, UsuarioTecnicoActivity.class );
+                startActivity(intent);
+
+
+            }
+
 
 
             }

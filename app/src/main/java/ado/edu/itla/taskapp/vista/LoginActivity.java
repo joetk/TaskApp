@@ -4,12 +4,17 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.net.URLConnection;
 import java.util.List;
 
 import ado.edu.itla.taskapp.MainActivity;
@@ -32,9 +37,6 @@ public class LoginActivity extends AppCompatActivity {
 
          TextView textViewRegistrate = findViewById(R.id.textViewRegistrarse);
          Button buttonLogin = findViewById(R.id.buttonLogin);
-
-
-
 
 
 
