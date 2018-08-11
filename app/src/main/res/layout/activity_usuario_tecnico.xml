@@ -7,12 +7,12 @@
     tools:context=".vista.UsuarioTecnicoActivity">
 
     <Button
-        android:id="@+id/buttonBusqueda"
+        android:id="@+id/buttonTodos"
         android:layout_width="109dp"
         android:layout_height="42dp"
         android:layout_marginTop="24dp"
         android:background="#e9e8e8"
-        android:text="Busqueda"
+        android:text="Todos"
         app:layout_constraintStart_toEndOf="@+id/buttonProceso"
         app:layout_constraintTop_toTopOf="parent" />
 

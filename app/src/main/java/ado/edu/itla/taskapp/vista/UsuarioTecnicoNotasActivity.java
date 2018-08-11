@@ -49,6 +49,8 @@ public class UsuarioTecnicoNotasActivity extends AppCompatActivity {
         switch(tarea.getTareaEstado())
         {
 
+
+
             case EN_PROCESO:
                 buttonListo.setText("TERMINADO");
                 buttonListo.setBackgroundColor(Color.rgb(226,78,51));
@@ -56,7 +58,11 @@ public class UsuarioTecnicoNotasActivity extends AppCompatActivity {
 
             case TERMINADO:
                 buttonListo.setEnabled(false);
+                buttonListo.setVisibility(View.GONE);
                 break;
+
+
+
 
 
         }
@@ -90,6 +96,8 @@ public class UsuarioTecnicoNotasActivity extends AppCompatActivity {
                 if (tareaRepo.actualizar(tareaActualizada)) {
 
                     Toast.makeText(UsuarioTecnicoNotasActivity.this, "se a cambiado el estado de la tarea", Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_OK);
+                    finish();
 
                 } else {
                     Toast.makeText(UsuarioTecnicoNotasActivity.this, "hubo un problema Cambiando el estado de la tarea", Toast.LENGTH_SHORT).show();
@@ -97,8 +105,7 @@ public class UsuarioTecnicoNotasActivity extends AppCompatActivity {
                 }
 
 
-                Intent intent  = new Intent (UsuarioTecnicoNotasActivity.this, UsuarioTecnicoActivity.class );
-                startActivity(intent);
+
 
 
             }

@@ -37,5 +37,8 @@ public class UsuarioNormalTareasDetalleActivity extends AppCompatActivity {
         txtEstado.setText(tarea.getTareaEstado().toString());
         txtDescripcion.setText(tarea.getDescripcion());
 
+        setResult(RESULT_OK);
+        finish();
+
     }
 }

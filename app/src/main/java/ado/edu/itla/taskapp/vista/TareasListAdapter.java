@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import ado.edu.itla.taskapp.R;
@@ -26,6 +27,7 @@ public class TareasListAdapter extends BaseAdapter {
 
     private Context context;
     private  List<Tarea> tareas;
+    private  List<Tarea> tareasFiltradas;
     private UsuarioRepositorioDbImp usuarioDbImp;
     private CategoriaRepositorioDbImp categoriaDbImp;
     private String labelAsignado;
@@ -34,6 +36,7 @@ public class TareasListAdapter extends BaseAdapter {
     {
         this.context = context;
         this.tareas = tareas;
+        this.tareasFiltradas = tareas;
         this.labelAsignado=  tareas.size() > 0 ? "Asignado A: " : "";
 
         usuarioDbImp = new UsuarioRepositorioDbImp(context);
@@ -44,17 +47,17 @@ public class TareasListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return tareas.size();
+        return tareasFiltradas.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return tareas.get(position) ;
+        return tareasFiltradas.get(position) ;
     }
 
     @Override
     public long getItemId(int position) {
-        return tareas.get(position).getId();
+        return tareasFiltradas.get(position).getId();
     }
 
     @Override
@@ -73,7 +76,7 @@ public class TareasListAdapter extends BaseAdapter {
        TextView txtFecha = view.findViewById(R.id.textViewFecha);
        TextView txtEstado = view.findViewById(R.id.textViewEstado);
 
-       Tarea tarea  = tareas.get(position);
+       Tarea tarea  = tareasFiltradas.get(position);
        Usuario usuario =  usuarioDbImp.buscar(tarea.getUsuarioAsignado() );
        Categoria categoria =  categoriaDbImp.buscar(tarea.getCategoriaId());
 
@@ -109,4 +112,36 @@ public class TareasListAdapter extends BaseAdapter {
 
         return view;
     }
+
+    public  void filtroTareaEstado (Tarea.TareaEstado tareaEstado)
+    {
+
+        tareasFiltradas = new ArrayList<Tarea>();
+
+        for ( Tarea tarea : tareas)
+        {
+            if (tarea.getTareaEstado() == tareaEstado)
+            {
+                tareasFiltradas.add(tarea);
+
+            }
+
+        }
+
+        notifyDataSetChanged();
+
+
+    }
+
+    public void filtroTodo ()
+    {
+
+        tareasFiltradas = tareas;
+        notifyDataSetChanged();
+
+    }
+
+
+
+
 }

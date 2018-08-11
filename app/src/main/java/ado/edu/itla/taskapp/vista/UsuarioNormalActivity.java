@@ -21,6 +21,9 @@ import ado.edu.itla.taskapp.repositorio.db.UsuarioRepositorioDbImp;
 
 public class UsuarioNormalActivity extends AppCompatActivity {
 
+
+    private static final int  OK = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,23 +31,15 @@ public class UsuarioNormalActivity extends AppCompatActivity {
 
 
         Button crearTareas = findViewById(R.id.buttonTareas);
+        Button buttonTodas = findViewById(R.id.buttonTodas);
+        Button buttonProceso  = findViewById(R.id.buttonProceso);
         ListView listView =  findViewById(R.id.listasTareas);
-        TareaRepositorioDbImp TareaDbImp = new TareaRepositorioDbImp(this);
-
-        List<Tarea> listaTareas = TareaDbImp.buscarCreadaPor(LoginInfo.getInstance().usuario);
-
-        if (listaTareas == null)
-        {
-            listaTareas = new ArrayList<Tarea>();
-        }
 
 
+        final TareasListAdapter adapter =  getAdapterTarea();
 
 
-        TareasListAdapter tareaAdapter = new TareasListAdapter(this, listaTareas );
-
-
-        listView.setAdapter(tareaAdapter);
+        listView.setAdapter(getAdapterTarea());
 
 
         crearTareas.setOnClickListener(new View.OnClickListener() {
@@ -73,5 +68,68 @@ public class UsuarioNormalActivity extends AppCompatActivity {
             }
         });
 
+        buttonTodas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                adapter.filtroTodo();
+
+            }
+        });
+
+        buttonProceso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapter.filtroTareaEstado(Tarea.TareaEstado.EN_PROCESO);
+            }
+        });
+
+
     }
+
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+
+
+
+        ListView listView =  findViewById(R.id.listasTareas);
+
+          if (requestCode == OK)
+          {
+
+              if (resultCode == RESULT_OK)
+              {
+                 listView.setAdapter(getAdapterTarea());
+
+
+              }
+
+          }
+
+
+
+
+    }
+
+    private  TareasListAdapter getAdapterTarea ()
+    {
+
+        TareaRepositorioDbImp TareaDbImp = new TareaRepositorioDbImp(this);
+
+        List<Tarea> listaTareas = TareaDbImp.buscarCreadaPor(LoginInfo.getInstance().usuario);
+
+        if (listaTareas == null)
+        {
+            listaTareas = new ArrayList<Tarea>();
+        }
+
+
+
+
+        return  new TareasListAdapter(this, listaTareas );
+
+
+    }
+
 }
